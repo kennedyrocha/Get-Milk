@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conversor="clr-namespace:GetMilk.Conversor"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F6FA"
+             x:Class="GetMilk.Views.ListarColetas">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conversor:TachadoConversor x:Key="Tachado"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Margin="20, 40, 0, 0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span x:Name="numColetas" Text="" FontFamily="MontserratRegular" FontSize="20" TextColor="Black"/>
+                            <Span Text=" Coletas" FontFamily="MontserratRegular" FontSize="20" TextColor="Black"/>
+                            <Span Text="&#10;"/>
+                            <Span x:Name="DiaSemana" Text="-" FontFamily="MontserratRegular" FontSize="20" TextColor="Black"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame BackgroundColor="{StaticResource Azul}" CornerRadius="30" Grid.Column="1" Margin="0, 20, 20, 0">
+                    <StackLayout>
+                        <Label TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="Dia" Text="-" FontFamily="MontserratMedium" FontSize="20"/>
+                                    <Span Text="&#10;"/>
+                                    <Span x:Name="Mes" Text="-" FontFamily="MontserratLight" FontSize="14"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" TranslationY="30">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout>
+                        <ActivityIndicator IsRunning="True" HeightRequest="25" WidthRequest="25" x:Name="barraCarregar" Color="{StaticResource Azul}"/>
+                    </StackLayout>
+
+                    <CollectionView x:Name="CVListaDeColeta" EmptyView="Nenhuma Coleta">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="0, 20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Margin="15, 0,0,0" x:Name="LblColetaDetalhe" Grid.Column="0" LineHeight="1.2" TextDecorations="{Binding Fechado, Converter={ StaticResource Tachado}}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Coleta: " Style="{StaticResource TituloColeta}"/>
+                                                <Span Text="{Binding collectId}" Style="{StaticResource TituloColeta}"/>
+                                                <Span Text="&#10;"/>
+                                                <Span Text="Fazenda " Style="{StaticResource Horario}"/>
+                                                <Span Text="{Binding farmerName}" Style="{StaticResource Horario}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button x:Name="BtnColetar" Grid.Column="1" Text="Coletar" Style="{StaticResource BotaoCampo}" Clicked="BtnColetaAsync" CommandParameter="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Visual="Material"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource Azul}"
+             x:Class="GetMilk.Views.Login">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Margin="20, 40, 0, 0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Olá, seja bem vindo!" FontFamily="MontserratBold" FontSize="20" TextColor="White"/>
+                            <Span Text="&#10;"/>
+                            <Span Text="Entre na sua conta!" FontFamily="MontserratRegular" FontSize="18" TextColor="White"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame Grid.Column="1" BackgroundColor="Transparent" HasShadow="False">
+                    <Image Source="Logo.jpeg"/>
+                </Frame>
+            </Grid>
+
+            <Frame Grid.Row="1" HasShadow="False" CornerRadius="30" TranslationY="30" BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Frame BackgroundColor="#F5F6FA" CornerRadius="10" Margin="30" HasShadow="True" VerticalOptions="Start">
+                        <StackLayout VerticalOptions="Center">
+
+                            <Label Style="{StaticResource EntradaCampoEntry}" Text="Digite seu CPF:" BackgroundColor="Transparent"/>
+                            <Frame Padding="0" CornerRadius="0" BorderColor="#EDEDED" HasShadow="False" Visual="Material" Margin="0,0,0,20">
+                                <Entry x:Name="numeroCPF" Style="{StaticResource EntradaCampoEntry}" PlaceholderColor="{StaticResource Cinza}" Placeholder="CPF"
+                                       TextChanged="FormataCPF" Keyboard="Numeric"/>
+                            </Frame>
+
+                            <Label Style="{StaticResource EntradaCampoEntry}" Text="Digite sua senha:" BackgroundColor="Transparent"/>
+                            <Frame Padding="0" CornerRadius="0" BorderColor="#EDEDED" HasShadow="False" Visual="Material" Margin="0,0,0,20">
+                                <Entry MaxLength="10" x:Name="senha" Style="{StaticResource EntradaCampoEntry}" PlaceholderColor="{StaticResource Cinza}"  Placeholder="Senha" IsPassword="True"/>
+                            </Frame>
+
+                            <Button Text="Entrar" Style="{StaticResource BotaoCampo}" Clicked="LogarAsync"/>
+
+                            <ActivityIndicator IsRunning="False" HeightRequest="25" WidthRequest="25" x:Name="barraCarregar" Color="{StaticResource Azul}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

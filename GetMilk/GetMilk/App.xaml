@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GetMilk.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Cinza">#888888</Color>
+            <Color x:Key="Azul">#2C7CC4</Color>
+
+            <Style x:Key="BaseLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="TituloCampo" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="FontFamily" Value="MontserratRegular" />
+            </Style>
+            <Style x:Key="ValorCampo" TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserratLight" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource Cinza}" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="BaseEntradaCampo" TargetType="InputView">
+                <Setter Property="PlaceholderColor" Value="Black" />
+                <Setter Property="TextColor" Value="{StaticResource Cinza}" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="EntradaCampoEntry" TargetType="Entry" BasedOn="{StaticResource BaseEntradaCampo}">
+                <Setter Property="FontFamily" Value="MontserratRegular" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style x:Key="EntradaCampoEditor" TargetType="Editor" BasedOn="{StaticResource BaseEntradaCampo}">
+                <Setter Property="FontFamily" Value="MontserratRegular" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="AutoSize" Value="TextChanges" />
+            </Style>
+            <Style x:Key="BotaoCampo" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Azul}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                <Setter Property="Visual" Value="Default" />
+                <Setter Property="Padding" Value="20, 10" />
+            </Style>
+            <Style x:Key="BotaoArredondado" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Azul}" />
+                <Setter Property="CornerRadius" Value="50" />
+                <Setter Property="FontSize" Value="36" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="75" />
+                <Setter Property="HeightRequest" Value="75" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="TranslationY" Value="-30" />
+            </Style>
+            <Style x:Key="Horario" TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserratLight" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="TituloColeta" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="FontFamily" Value="MontserratBold" />
+            </Style>
+            <Style x:Key="TituloVizualizar" TargetType="Label" BasedOn="{StaticResource TituloColeta}">
+                <Setter Property="FontSize" Value="20" />                
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
